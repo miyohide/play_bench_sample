@@ -15,8 +15,14 @@ import play.db.*;
 public class Application extends Controller {
 
     public static Result index() {
+        Member m = new Member();
+        m.name = "hoge1";
+        m.email = "hoge1@example.com";
+        m.save();
+
         List<Member> members = Member.find.all();
         return ok(index.render(members));
     }
 
 }
+
