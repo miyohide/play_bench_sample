@@ -11,7 +11,8 @@ Play2WarKeys.servletVersion := "3.0"
 libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
-  cache
+  cache,
+  "org.postgresql" % "postgresql" % "9.3-1100-jdbc4"
 )     
 
 play.Project.playJavaSettings
