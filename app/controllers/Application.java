@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import models.Member;
+import models.Posts;
 import play.*;
 import play.mvc.*;
 import views.html.*;
@@ -19,6 +20,11 @@ public class Application extends Controller {
         m.name = "hoge1";
         m.email = "hoge1@example.com";
         m.save();
+
+        Posts p = new Posts();
+        p.title = "post1";
+        p.body = "post1\npost1";
+        p.save();
 
         List<Member> members = Member.find.all();
         return ok(index.render(members));

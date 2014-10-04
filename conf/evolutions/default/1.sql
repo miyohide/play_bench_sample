@@ -10,18 +10,27 @@ create table member (
   constraint pk_member primary key (id))
 ;
 
+create table posts (
+  id                        integer not null,
+  title                     varchar(255),
+  body                      TEXT,
+  constraint pk_posts primary key (id))
+;
+
 create sequence member_seq;
+
+create sequence posts_seq;
 
 
 
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+drop table if exists member cascade;
 
-drop table if exists member;
-
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table if exists posts cascade;
 
 drop sequence if exists member_seq;
+
+drop sequence if exists posts_seq;
 
