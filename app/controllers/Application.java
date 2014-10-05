@@ -16,18 +16,18 @@ import play.db.*;
 public class Application extends Controller {
 
     public static Result index() {
-        Member m = new Member();
-        m.name = "hoge1";
-        m.email = "hoge1@example.com";
-        m.save();
+        /* Member m = new Member(); */
+        /* m.name = "hoge1"; */
+        /* m.email = "hoge1@example.com"; */
+        /* m.save(); */
 
         Posts p = new Posts();
         p.title = "post1";
         p.body = "post1\npost1";
         p.save();
 
-        List<Member> members = Member.find.all();
-        return ok(index.render(members));
+        List<Posts> posts = Posts.find.all();
+        return ok(index.render(posts));
     }
 
 }
