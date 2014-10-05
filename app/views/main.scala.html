@@ -1,4 +1,10 @@
-@(member: models.Member)
+@(post: models.Posts)
 
-<div>@member.name : @member.email</div>
+<tr>
+    <td>@post.title</td>
+    <td>@post.body</td>
+    <td>Show</td>
+    <td>Edit</td>
+    <td>Destroy</td>
+</tr>
 
