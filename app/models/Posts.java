@@ -17,8 +17,8 @@ public class Posts extends Model {
     @Column(columnDefinition = "TEXT") 
     public String body;
     
-    public static Finder<Long, Posts> find = new Finder<>(
-            Long.class, Posts.class
+    public static Finder<Integer, Posts> find = new Finder<>(
+            Integer.class, Posts.class
             );
 
 }
