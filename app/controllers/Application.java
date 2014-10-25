@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import models.Member;
 import models.Posts;
@@ -16,17 +18,22 @@ import play.db.*;
 public class Application extends Controller {
 
     public static Result index() {
-        /* Member m = new Member(); */
-        /* m.name = "hoge1"; */
-        /* m.email = "hoge1@example.com"; */
-        /* m.save(); */
+        List<Integer> list = Collections.synchronizedList(new ArrayList<>());
+        List<Integer> list2 = Collections.synchronizedList(new ArrayList<>());
 
-        Posts p = new Posts();
-        p.title = "post1";
-        p.body = "post1\npost1";
-        p.save();
+        for (int i = 0; i < 300; i++ ) {
+            list.add(i);
+        }
 
-        List<Posts> posts = Posts.find.all();
+        Collections.shuffle(list);
+
+        for (int i = 0; i < 100; i++) {
+            list2.add(list.get(i));
+        }
+
+        List<Posts> posts = Posts.find
+            .where().in("id", list2).findList();
+
         return ok(index.render(posts));
     }
 
